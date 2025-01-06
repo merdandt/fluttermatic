@@ -1,0 +1,70 @@
+name: fluttermatic
+description: A Bootstrap app for fast start of development.
+version: 1.0.0
+environment:
+  mason: ^0.1.0
+repository: "https://github.com/VeryGoodOpenSource/very_good_templates/tree/main/very_good_core"
+vars:
+  project_name:
+    type: string
+    description: The project name
+    default: my_app
+    prompt: "What is the project name?"
+  flutter_version:
+    type: string
+    description: The version of Flutter
+    default: "3.27.0"
+    prompt: "What is Flutter version?"
+  sdk_version:
+    type: string
+    description: The version of SDK
+    default: ">=3.6.0 <4.0.0"
+    prompt: "What is SDK version?"
+  org_name:
+    type: string
+    description: The organization name
+    default: com.example
+    prompt: "What is the organization name?"
+  application_id:
+    type: string
+    default: "newapp"
+    description: "The application id on Android, Bundle ID on iOS and company name on Windows. If omitted value will be formed by org_name + . + project_name."
+    prompt: "What is the application id (a word)?"
+  description:
+    type: string
+    description: A short project description
+    default: Awesome new Flutter project 
+    prompt: "What is the project description?"
+  ui_kit_short_name:
+    type: string
+    description: Package short name to put before naming classes.
+    default: ui
+    prompt: Package short name
+  graphql:
+    type: boolean
+    description: Include GraphQL support
+    default: false
+    prompt: Do you want to include GraphQL support?
+  endpoint_prod:
+    type: string
+    description: The Production API endpoint
+    default: "https://api.example.com"
+    prompt: "What is production API endpoint?"
+  endpoint_dev:
+    type: string
+    description: The Development API endpoint
+    default: "https://dev.api.example.com"
+    prompt: "What is development API endpoint?"
+  endpoint_stg:
+    type: string
+    description: The Staging API endpoint
+    default: "https://stg.api.example.com"
+    prompt: "What is staging API endpoint?"
+  swagger_url:
+    type: string
+    description: The Swagger URL
+    default: "https://api.example.com/swagger"
+    prompt: "What is Swagger URL?"
+
+
+

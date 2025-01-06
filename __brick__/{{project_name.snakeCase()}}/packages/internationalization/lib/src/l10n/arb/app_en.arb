@@ -1,0 +1,19 @@
+
+{
+    "@@locale": "en",
+
+    "counterAppBarTitle": "Counter",
+      "@counterAppBarTitle": {
+      "description": "Example of a text that is used as a title in the app bar"
+    },
+
+    "withPlaceholder": "This is your {yourPlaceholder}",
+    "@withPlaceholder": {
+      "description": "Example of a text with a placeholder",
+      "placeholders": {
+        "yourPlaceholder": {}
+        }
+      }
+  
+  }
+  

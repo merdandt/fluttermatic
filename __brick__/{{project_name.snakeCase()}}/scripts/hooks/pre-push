@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+script_file="$(readlink -f -- $0)"
+hooks_dir="$(dirname -- $script_file)"
+scripts_dir="$(dirname -- $hooks_dir)"
+project_dir="$(dirname -- $scripts_dir)"
+
+# # Format flutter code
+# $scripts_dir/format.sh
+# # Clean flutter cache
+# $scripts_dir/clean.sh
+# # Fetch packages
+# $scripts_dir/fetch.sh
+# # Regenerate codegen
+# $scripts_dir/gen_code.sh rewrite
+# # Regenerate localizations
+# $scripts_dir/gen_l10n.sh
+
+# cd $project_dir
+# fvm flutter analyze
+# if [ $? -ne 0 ]; then
+#   echo "Before push, fix all analyzer errors"
+#   exit 1
+# fi
+
+# flutter test
+# if [ $? -ne 0 ]; then
+#   exit 1
+# fi

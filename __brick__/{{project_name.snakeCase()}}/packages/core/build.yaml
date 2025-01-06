@@ -1,0 +1,17 @@
+targets:
+  $default:
+    builders:
+      json_serializable:
+        options:
+          # Options configure how source code is generated for every
+          explicit_to_json: true
+      freezed:
+        options:
+          fromJson: true
+          toJson: true
+          equal: true
+          addImplicitFinal: true
+          copyWith: true
+          unionValueCase: pascal
+          
+    

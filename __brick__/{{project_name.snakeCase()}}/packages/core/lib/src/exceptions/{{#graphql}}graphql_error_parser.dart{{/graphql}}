@@ -1,0 +1,153 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:gql_exec/gql_exec.dart';
+
+part 'graphql_error_parser.freezed.dart';
+part 'graphql_error_parser.g.dart';
+
+enum GraphqlErrorType {
+  /// The case when the error is not defined, and we need to display
+  /// just the error message (message is not empty).
+  dynamicMessage,
+
+  /// The case when the error is not defined, and message is empty
+  emptyMessage,
+
+  userAlreadyExists,
+  appleAuthenticationError,
+  verificationCodeMismatch,
+  loginExistsAsSocialAccount,
+  accountNotFound,
+  accountTypeVerificationError,
+  invalidAccountCredentials,
+  notEnoughMoneyError,
+  unauthorized,
+  businessProfileHasAlreadyBeenActivatedError,
+  validationError;
+
+  factory GraphqlErrorType.fromString({
+    required final String value,
+    required final String message,
+  }) {
+    switch (value) {
+      case 'VALIDATION_ERROR':
+        return GraphqlErrorType.validationError;
+      case 'USER_ALREADY_EXISTS':
+        return GraphqlErrorType.userAlreadyExists;
+      case 'INVALID_ACCOUNT_CREDENTIALS':
+        return GraphqlErrorType.invalidAccountCredentials;
+      case 'VERIFICATION_CODE_MISMATCH':
+        return GraphqlErrorType.verificationCodeMismatch;
+      case 'ACCOUNT_NOT_FOUND':
+        return GraphqlErrorType.accountNotFound;
+      case 'APPLE_AUTHENTICATION_ERROR':
+        return GraphqlErrorType.appleAuthenticationError;
+      case 'LOGIN_EXISTS_AS_SOCIAL_ACCOUNT':
+        return GraphqlErrorType.loginExistsAsSocialAccount;
+      case 'ACCOUNT_TYPE_VERIFICATION_ERROR':
+        return GraphqlErrorType.accountTypeVerificationError;
+      case 'BUSINESS_PROFILE_HAS_ALREADY_BEEN_ACTIVATED_ERROR':
+        return GraphqlErrorType.businessProfileHasAlreadyBeenActivatedError;
+      case 'NOT_ENOUGH_MONEY_ERROR':
+        return GraphqlErrorType.notEnoughMoneyError;
+      case 'UNAUTHORIZED':
+        return GraphqlErrorType.unauthorized;
+    }
+    if (message.isEmpty) return GraphqlErrorType.emptyMessage;
+
+    return GraphqlErrorType.dynamicMessage;
+  }
+}
+
+@freezed
+class ParsedGraphqlError with _$ParsedGraphqlError {
+  const factory ParsedGraphqlError.common({
+    required final String message,
+    required final GraphqlErrorType type,
+    required final GraphQLError error,
+  }) = _ParsedGraphqlError;
+  const factory ParsedGraphqlError.validation({
+    required final String message,
+    required final GraphqlErrorType type,
+    required final List<ValidationGraphqlErrorModel> validationErrors,
+    required final GraphQLError error,
+  }) = ValidationGraphqlError;
+  const ParsedGraphqlError._();
+  factory ParsedGraphqlError.fromGraphQLError(final GraphQLError error) {
+    final code = error.extensions?['code'] as String? ?? '';
+    final type = GraphqlErrorType.fromString(
+      value: code,
+      message: error.message,
+    );
+    final validationErrors = <ValidationGraphqlErrorModel>[];
+    switch (type) {
+      case GraphqlErrorType.accountTypeVerificationError:
+      case GraphqlErrorType.verificationCodeMismatch:
+      case GraphqlErrorType.loginExistsAsSocialAccount:
+      case GraphqlErrorType.accountNotFound:
+      case GraphqlErrorType.userAlreadyExists:
+      case GraphqlErrorType.invalidAccountCredentials:
+      case GraphqlErrorType.emptyMessage:
+      case GraphqlErrorType.appleAuthenticationError:
+      case GraphqlErrorType.unauthorized:
+      case GraphqlErrorType.businessProfileHasAlreadyBeenActivatedError:
+      case GraphqlErrorType.notEnoughMoneyError:
+      case GraphqlErrorType.dynamicMessage:
+        break;
+      // Do nothing, as message will be written anyway
+      case GraphqlErrorType.validationError:
+        final possibleErrors = error.extensions?['errors'];
+        if (possibleErrors != null && possibleErrors is List) {
+          /// if TypeError will happen, then let it be and add this error
+          /// case to next app version
+          validationErrors.addAll(
+            possibleErrors.map(ValidationGraphqlErrorModel.fromJson),
+          );
+        }
+    }
+    if (validationErrors.isNotEmpty) {
+      return ParsedGraphqlError.validation(
+        message: code,
+        error: error,
+        validationErrors: validationErrors,
+        type: type,
+      );
+    }
+
+    return ParsedGraphqlError.common(
+      message: error.message.isEmpty ? code : error.message,
+      error: error,
+      type: type,
+    );
+  }
+    bool get isUnauthenticated => message == 'Unauthenticated.';
+}
+
+extension ParsedGraphqlErrorsExtension on Iterable<ParsedGraphqlError> {
+  T? onFirstValidationError<T>(
+    final T? Function(List<ValidationGraphqlErrorModel> validationErrors)
+        handle,
+  ) {
+    final error = whereType<ValidationGraphqlError>().firstOrNull;
+    if (error == null) return null;
+    final validationErrors = error.validationErrors;
+
+    return handle(validationErrors);
+  }
+
+  Iterable<ValidationGraphqlError> toValidationErrors<T>() =>
+      whereType<ValidationGraphqlError>();
+}
+
+@freezed
+@immutable
+class ValidationGraphqlErrorModel with _$ValidationGraphqlErrorModel {
+  @JsonSerializable()
+  const factory ValidationGraphqlErrorModel({
+    @Default('') final String field,
+    @Default('') final String message,
+    @Default('') final String constraint,
+  }) = _ValidationGraphqlErrorModel;
+  const ValidationGraphqlErrorModel._();
+  factory ValidationGraphqlErrorModel.fromJson(final dynamic json) =>
+      _$ValidationGraphqlErrorModelFromJson(json as Map<String, dynamic>);
+}

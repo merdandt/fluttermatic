@@ -35,11 +35,6 @@ vars:
     description: A short project description
     default: Awesome new Flutter project 
     prompt: "What is the project description?"
-  ui_kit_short_name:
-    type: string
-    description: Package short name to put before naming classes.
-    default: ui
-    prompt: Package short name
   graphql:
     type: boolean
     description: Include GraphQL support

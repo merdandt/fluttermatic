@@ -1,6 +1,6 @@
 {
     "name": "gallery",
-    "short_name": "gallery",
+    "ui_kit_short_name": "gallery",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

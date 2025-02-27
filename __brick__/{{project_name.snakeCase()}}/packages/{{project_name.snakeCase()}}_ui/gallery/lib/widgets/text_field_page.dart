@@ -17,18 +17,18 @@ class TextFieldPage extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all({{short_name.upperCase()}}Spacing.lg),
+        padding: const EdgeInsets.all(UISpacing.lg),
         child: const Column(
           children: [
-            // {{short_name.upperCase()}}TextField.emailTextField(
+            // UITextField.emailTextField(
             //   onChanged: (_) {},
             // ),
-            // const SizedBox(height: {{short_name.upperCase()}}Spacing.sm),
-            // {{short_name.upperCase()}}TextField.passwordTextField(
+            // const SizedBox(height: UISpacing.sm),
+            // UITextField.passwordTextField(
             //   onChanged: (_) {},
             // ),
-            // const SizedBox(height: {{short_name.upperCase()}}Spacing.sm),
-            // {{short_name.upperCase()}}TextField(
+            // const SizedBox(height: UISpacing.sm),
+            // UITextField(
             //   hintText: 'Default text field',
             //   onChanged: (_) {},
             // ),

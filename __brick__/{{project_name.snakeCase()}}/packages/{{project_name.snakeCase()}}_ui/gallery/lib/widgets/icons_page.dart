@@ -16,7 +16,7 @@ class _IconsPage extends State<IconsPage> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    const contentSpacing = {{short_name.upperCase()}}Spacing.sm;
+    const contentSpacing = UISpacing.sm;
     final appIconsList = [
       const SizedBox(height: contentSpacing),
       theme.icons.emailOutline(

@@ -20,8 +20,8 @@ cat > "$outputFile" <<EOF
   import 'package:flutter_svg/flutter_svg.dart';
   import 'package:{{project_name.snakeCase()}}_ui/gen/assets.gen.dart';
 
-  class {{short_name.upperCase()}}Icon {
-    const {{short_name.upperCase()}}Icon({required this.colorInitial});
+  class UIIcon {
+    const UIIcon({required this.colorInitial});
 
     final Color colorInitial;
 

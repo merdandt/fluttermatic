@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 /// Namespace for Default App Font Weights
-abstract class {{short_name.upperCase()}}FontWeight {
+abstract class UIFontWeight {
   /// FontWeight value of `w900`
   static const FontWeight black = FontWeight.w900;
 

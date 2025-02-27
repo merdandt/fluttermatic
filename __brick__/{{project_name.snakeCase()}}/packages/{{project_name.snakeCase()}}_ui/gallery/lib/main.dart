@@ -27,7 +27,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Example Gallery',
-      theme: _isDark ? {{short_name.upperCase()}}Theme().darkTheme : {{short_name.upperCase()}}Theme().lightTheme,
+      theme: _isDark ? UITheme().darkTheme : UITheme().lightTheme,
       home: RootPage(toggleTheme: _toggleTheme),
     );
   }

@@ -11,15 +11,15 @@ class SpacingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const spacingList = [
-      _SpacingItem(spacing: {{short_name.upperCase()}}Spacing.xxxs, name: 'xxxs'),
-      _SpacingItem(spacing: {{short_name.upperCase()}}Spacing.xxs, name: 'xxs'),
-      _SpacingItem(spacing: {{short_name.upperCase()}}Spacing.xs, name: 'xs'),
-      _SpacingItem(spacing: {{short_name.upperCase()}}Spacing.sm, name: 'sm'),
-      _SpacingItem(spacing: {{short_name.upperCase()}}Spacing.md, name: 'md'),
-      _SpacingItem(spacing: {{short_name.upperCase()}}Spacing.lg, name: 'lg'),
-      _SpacingItem(spacing: {{short_name.upperCase()}}Spacing.xlg, name: 'xlg'),
-      _SpacingItem(spacing: {{short_name.upperCase()}}Spacing.xxlg, name: 'xxlg'),
-      _SpacingItem(spacing: {{short_name.upperCase()}}Spacing.xxxlg, name: 'xxxlg'),
+      _SpacingItem(spacing: UISpacing.xxxs, name: 'xxxs'),
+      _SpacingItem(spacing: UISpacing.xxs, name: 'xxs'),
+      _SpacingItem(spacing: UISpacing.xs, name: 'xs'),
+      _SpacingItem(spacing: UISpacing.sm, name: 'sm'),
+      _SpacingItem(spacing: UISpacing.md, name: 'md'),
+      _SpacingItem(spacing: UISpacing.lg, name: 'lg'),
+      _SpacingItem(spacing: UISpacing.xlg, name: 'xlg'),
+      _SpacingItem(spacing: UISpacing.xxlg, name: 'xxlg'),
+      _SpacingItem(spacing: UISpacing.xxxlg, name: 'xxxlg'),
     ];
 
     return Scaffold(
@@ -41,7 +41,7 @@ class _SpacingItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all({{short_name.upperCase()}}Spacing.sm),
+      padding: const EdgeInsets.all(UISpacing.sm),
       child: Row(
         children: <Widget>[
           Row(
@@ -49,22 +49,22 @@ class _SpacingItem extends StatelessWidget {
             children: <Widget>[
               Container(
                 color: context.theme.colorScheme.primary,
-                width: {{short_name.upperCase()}}Spacing.xxs,
-                height: {{short_name.upperCase()}}Spacing.lg,
+                width: UISpacing.xxs,
+                height: UISpacing.lg,
               ),
               Container(
                 width: spacing,
-                height: {{short_name.upperCase()}}Spacing.lg,
+                height: UISpacing.lg,
                 color: context.theme.colorScheme.secondary,
               ),
               Container(
                 color: context.theme.colorScheme.primary,
-                width: {{short_name.upperCase()}}Spacing.xxs,
-                height: {{short_name.upperCase()}}Spacing.lg,
+                width: UISpacing.xxs,
+                height: UISpacing.lg,
               ),
             ],
           ),
-          const SizedBox(width: {{short_name.upperCase()}}Spacing.sm),
+          const SizedBox(width: UISpacing.sm),
           Text(name),
         ],
       ),

@@ -148,18 +148,18 @@ class _ColorTextContainer extends StatelessWidget {
         10,
       ),
       margin: const EdgeInsets.symmetric(
-        horizontal: {{short_name.upperCase()}}Spacing.lg * 2,
-        vertical: {{short_name.upperCase()}}Spacing.xs,
+        horizontal: UISpacing.lg * 2,
+        vertical: UISpacing.xs,
       ),
-      width: {{short_name.upperCase()}}Spacing.spaceUnit*100,
-      height: {{short_name.upperCase()}}Spacing.xxlg,
+      width: UISpacing.spaceUnit * 100,
+      height: UISpacing.xxlg,
       decoration: BoxDecoration(
         color: color,
         border: Border.all(
           color: theme.colorScheme.onBackground,
         ), // Set border width
         borderRadius: const BorderRadius.all(
-          Radius.circular({{short_name.upperCase()}}Spacing.xxs * 5),
+          Radius.circular(UISpacing.xxs * 5),
         ),
       ),
       child: Center(

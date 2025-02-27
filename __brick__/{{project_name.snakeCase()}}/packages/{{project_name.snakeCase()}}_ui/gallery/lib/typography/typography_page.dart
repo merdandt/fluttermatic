@@ -53,8 +53,8 @@ class _TextItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
-        horizontal: {{short_name.upperCase()}}Spacing.sm,
-        vertical: {{short_name.upperCase()}}Spacing.lg,
+        horizontal: UISpacing.sm,
+        vertical: UISpacing.lg,
       ),
       child: Text(name, style: style),
     );

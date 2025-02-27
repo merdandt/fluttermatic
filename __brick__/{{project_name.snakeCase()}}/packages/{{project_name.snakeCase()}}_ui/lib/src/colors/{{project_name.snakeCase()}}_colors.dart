@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-abstract class {{short_name.upperCase()}}Colors {
- /// Transperent color.
+abstract class UIColors {
+  /// Transperent color.
   static const Color transparent = Colors.transparent;
 
   /// LIGHT COLORS
@@ -421,5 +421,4 @@ abstract class {{short_name.upperCase()}}Colors {
       Color(0xFFB8C8CC), // #5AB7FC на 96.31%
     ],
   );
-
 }

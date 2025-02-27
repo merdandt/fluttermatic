@@ -38,7 +38,6 @@ void run(HookContext context) {
     'flutter_version': configuration.flutterVersion,
     'sdk_version': configuration.sdkVersion,
     'graphql': configuration.graphql,
-    'ui_kit_short_name': configuration.uiKitShortName,
     'endpoint_prod': configuration.endpointProd,
     'endpoint_dev': configuration.endpointDev,
     'endpoint_stg': configuration.endpointStg,

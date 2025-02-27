@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-abstract class {{short_name.upperCase()}}Radiuses {
+abstract class UIRadiuses {
   /// BorderRadius with `Radius.circular(16)` value.
   static const borderMedium = BorderRadius.all(radiusM);
 

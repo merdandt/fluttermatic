@@ -11,7 +11,7 @@ class ButtonPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    const contentSpacing = {{short_name.upperCase()}}Spacing.sm;
+    const contentSpacing = UISpacing.sm;
     final appButtonList = [
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -78,8 +78,8 @@ class ButtonPage extends StatelessWidget {
         padding: EdgeInsets.zero,
         label: const Padding(
           padding: EdgeInsets.symmetric(
-            vertical: {{short_name.upperCase()}}Spacing.xxs,
-            horizontal: {{short_name.upperCase()}}Spacing.xs,
+            vertical: UISpacing.xxs,
+            horizontal: UISpacing.xs,
           ),
           child: Text(
             'Common chip',

@@ -2,16 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../{{project_name.snakeCase()}}_ui.dart';
 
-
 part 'theme_colors.dart';
 part 'theme_text_and_inputs.dart';
 part 'theme_bars_and_modals.dart';
 part 'theme_icons_and_elements.dart';
 part 'theme_buttons.dart';
 
-
-class {{short_name.upperCase()}}Theme {
-  
+class UITheme {
   /// Light Theme example based on Material 2 Design.
   ThemeData get lightTheme => ThemeData(
         useMaterial3: true,

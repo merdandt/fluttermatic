@@ -7,7 +7,7 @@ void run(HookContext context) async {
   final projectName = vars['project_name'];
   final flutterVersion = vars['flutter_version'];
   final sdkVersion = vars['sdk_version'];
-  final swaggerUrl = vars['swagger_url'];
+  final String? swaggerUrl = vars['swagger_url'];
   final root = "$directory/$projectName";
 
   context.logger.info('Directory: $directory');
@@ -22,7 +22,7 @@ void run(HookContext context) async {
   );
 
   final scriptPaths = {
-    // 'init': "$root/scripts/init.sh",
+    'init': "$root/scripts/init.sh",
     'ui_init': "$root/packages/${projectName}_ui/scripts/init.sh",
     'gen_l10n': "$root/packages/internationalization/scripts/gen_l10n.sh",
     'clean': "$root/scripts/clean.sh",
@@ -94,24 +94,25 @@ void run(HookContext context) async {
     }
 
     // Run other CLI commands
-
-    final swagger = await Process.run(
-      'sh',
-      ['-c', 'swaggen generate --url="$swaggerUrl"'],
-      runInShell: true,
-      workingDirectory: root,
-      environment: {
-        'FLUTTER_VERSION': flutterVersion,
-        'PROJECT_NAME': projectName,
-      },
-    );
-    if (swagger.exitCode != 0) {
-      context.logger.err('Failed to run swagger script.');
-      context.logger.err('swagger stderr: ${swagger.stderr}');
-      progress.fail();
-      return;
-    } else {
-      context.logger.info('swagger stdout: ${swagger.stdout}');
+    if (swaggerUrl != null) {
+      final swagger = await Process.run(
+        'sh',
+        ['-c', 'swaggen generate --url="$swaggerUrl"'],
+        runInShell: true,
+        workingDirectory: root,
+        environment: {
+          'FLUTTER_VERSION': flutterVersion,
+          'PROJECT_NAME': projectName,
+        },
+      );
+      if (swagger.exitCode != 0) {
+        context.logger.err('Failed to run swagger script.');
+        context.logger.err('swagger stderr: ${swagger.stderr}');
+        progress.fail();
+        return;
+      } else {
+        context.logger.info('swagger stdout: ${swagger.stdout}');
+      }
     }
   } catch (e) {
     context.logger.err('Error running scripts: $e');

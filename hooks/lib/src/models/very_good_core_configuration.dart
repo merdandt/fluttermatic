@@ -53,13 +53,6 @@ enum _VeryGoodCoreConfigurationVariables {
   /// {@endtemplate}
   sdkVersion._('sdk_version'),
 
-  /// {@template very_good_core_configuration_variables.ui_kit_short_name}
-  /// The short name of the UI kit to use.
-  ///
-  /// Defaults to `ui`.
-  /// {@endtemplate}
-  uiKitShortName._('ui_kit_short_name'),
-
   /// {@template very_good_core_configuration_variables.graphql}
   /// Whether to generate a GraphQL configuration.
   ///
@@ -112,7 +105,6 @@ class VeryGoodCoreConfiguration extends Equatable {
     String? flutterVersion,
     String? organizationName,
     String? description,
-    String? uiKitShortName,
     String? sdkVersion,
     bool? graphql,
     String? endpointProd,
@@ -128,7 +120,6 @@ class VeryGoodCoreConfiguration extends Equatable {
         organizationName = organizationName ?? 'com.example',
         flutterVersion = flutterVersion ?? '3.27.0',
         sdkVersion = sdkVersion ?? '^3.6.0',
-        uiKitShortName = uiKitShortName ?? 'ui',
         graphql = graphql ?? false,
         endpointProd = endpointProd ?? 'https://api.example.com',
         endpointStg = endpointStg ?? 'https://staging.api.example.com',
@@ -225,16 +216,6 @@ class VeryGoodCoreConfiguration extends Equatable {
       );
     }
 
-    final uiKitShortName =
-        vars[_VeryGoodCoreConfigurationVariables.uiKitShortName.key];
-    if (uiKitShortName is! String?) {
-      throw ArgumentError.value(
-        vars,
-        'vars',
-        '''Expected a value for key "${_VeryGoodCoreConfigurationVariables.uiKitShortName.key}" to be of type String?, got $uiKitShortName.''',
-      );
-    }
-
     final graphql = vars[_VeryGoodCoreConfigurationVariables.graphql.key];
     if (graphql is! bool) {
       throw ArgumentError.value(
@@ -281,7 +262,6 @@ class VeryGoodCoreConfiguration extends Equatable {
       organizationName: organizationName,
       flutterVersion: flutterVersion,
       sdkVersion: sdkVersion,
-      uiKitShortName: uiKitShortName,
       graphql: graphql,
       swaggerUrl: swaggerUrl,
       endpointProd: endpointProd,
@@ -314,9 +294,6 @@ class VeryGoodCoreConfiguration extends Equatable {
 
   /// {@macro very_good_core_configuration_variables.sdk_version}
   final String sdkVersion;
-
-  /// {@macro very_good_core_configuration_variables.ui_kit_short_name}
-  final String uiKitShortName;
 
   /// {@macro very_good_core_configuration_variables.graphql}
   final bool graphql;
@@ -355,7 +332,6 @@ class VeryGoodCoreConfiguration extends Equatable {
   List<Object?> get props => [
         projectName,
         sdkVersion,
-        uiKitShortName,
         swaggerUrl,
         graphql,
         endpointProd,

@@ -9,7 +9,7 @@
     },
     {
       "name": "_macros",
-      "rootUri": "file:///Users/xskills/fvm/versions/3.24.4/bin/cache/dart-sdk/pkg/_macros",
+      "rootUri": "file:///Users/xskills/fvm/versions/3.29.0/bin/cache/dart-sdk/pkg/_macros",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
@@ -380,10 +380,10 @@
       "languageVersion": "3.6"
     }
   ],
-  "generated": "2025-01-04T17:25:45.492513Z",
+  "generated": "2025-02-27T03:41:39.952631Z",
   "generator": "pub",
-  "generatorVersion": "3.6.0",
-  "flutterRoot": "file:///Users/xskills/fvm/versions/3.24.4",
-  "flutterVersion": "3.27.1",
+  "generatorVersion": "3.7.0",
+  "flutterRoot": "file:///Users/xskills/fvm/versions/3.29.0",
+  "flutterVersion": "3.29.0",
   "pubCache": "file:///Users/xskills/.pub-cache"
 }

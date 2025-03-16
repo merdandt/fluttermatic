@@ -13,12 +13,12 @@ vars:
   flutter_version:
     type: string
     description: The version of Flutter
-    default: "3.27.0"
+    default: "3.29.0"
     prompt: "What is Flutter version?"
   sdk_version:
     type: string
     description: The version of SDK
-    default: ">=3.6.0 <4.0.0"
+    default: ">=3.7.0 <4.0.0"
     prompt: "What is SDK version?"
   org_name:
     type: string
@@ -27,7 +27,7 @@ vars:
     prompt: "What is the organization name?"
   application_id:
     type: string
-    default: "newapp"
+    default: "com.example.my_app"
     description: "The application id on Android, Bundle ID on iOS and company name on Windows. If omitted value will be formed by org_name + . + project_name."
     prompt: "What is the application id (a word)?"
   description:
